@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hand_palm_png_2"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/b10"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/round_button_press"
+                android:text="ปิตตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="247dp"
+                tools:layout_editor_absoluteY="31dp" />
+
+            <Button
+                android:id="@+id/b20"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/round_button_press"
+                android:text="ปิตตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="106dp"
+                tools:layout_editor_absoluteY="30dp" />
+
+            <Button
+                android:id="@+id/b30"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/round_button_press"
+                android:text="ปิตตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="31dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/b11"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="วาตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="106dp"
+                tools:layout_editor_absoluteY="108dp" />
+
+            <Button
+                android:id="@+id/b21"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="วาตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="109dp" />
+
+            <Button
+                android:id="@+id/b31"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="วาตะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="247dp"
+                tools:layout_editor_absoluteY="109dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/b12"
+                android:layout_width="67dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="เสมหะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="177dp" />
+
+            <Button
+                android:id="@+id/b22"
+                android:layout_width="67dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="เสมหะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="179dp" />
+
+            <Button
+                android:id="@+id/b32"
+                android:layout_width="67dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="เสมหะ"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="245dp"
+                tools:layout_editor_absoluteY="179dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginStart="54dp"
+        android:background="@drawable/text_border"
+        android:inputType="textMultiLine"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:scrollbars="vertical"
+        android:text="unknown"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="STOP"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="221dp"
+            tools:layout_editor_absoluteY="564dp" />
+
+        <Button
+            android:id="@+id/button20"
+            android:layout_width="161dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="START"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="564dp" />
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="21dp"
+        android:background="@android:color/background_light"
+        android:indeterminate="false"
+        android:max="120"
+        android:progress="60"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="17dp"
+        android:background="@android:color/holo_green_light"
+        android:text="60bpm"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</android.support.constraint.ConstraintLayout>
