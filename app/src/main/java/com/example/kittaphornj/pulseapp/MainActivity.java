@@ -64,8 +64,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bundle bundle = getIntent().getExtras();
+        String dname = bundle.getString("device_name");
+        String dmac = bundle.getString("device_mac");
+        Toast.makeText(MainActivity.this,dname+dmac ,Toast.LENGTH_SHORT).show();
         //bleID = getIntent().getStringExtra("device_id");
-        bleID = "30:AE:A4:4F:43:B6";
+        //bleID = "30:AE:A4:4F:43:B6";
+        bleID = dmac;
         dialog = new ProgressDialog(MainActivity.this);
         dialog.setCancelable(false);
         text1 = (TextView) findViewById(R.id.textView);
@@ -105,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivityForResult(enableIntent, ENABLE_BT_REQUEST_CODE);
             Toast.makeText(getApplicationContext(), "Enabling Bluetooth!", Toast.LENGTH_SHORT).show();
         }
+        dialog.setMessage("Connecting.....");
+        connectDevice(bleID);
 
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -166,20 +173,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setMessage("Connecting please wait....");
-                dialog.show();
-                connectDevice(bleID);
+                if(connectTag == false) {
+                    dialog.setMessage("Connecting please wait....");
+                    dialog.show();
+                    connectDevice(bleID);
+                }else{
+                    sendMSG();
+                }
             }
         });
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(connectTag == true) {
-                    connectTag = false;
+                    //connectTag = false;
                     deviceInterface.sendMessage("OFF");
-                    bluetoothManager.closeDevice(bleID);
-                    start.setEnabled(true);
-                    start.setBackgroundColor(Color.GRAY);
+                    //bluetoothManager.closeDevice(bleID);
+                    //start.setEnabled(true);
+                    //start.setBackgroundColor(Color.GRAY);
                 }else{
                     Toast.makeText(MainActivity.this, "No device is connected yet.", Toast.LENGTH_SHORT).show();
                 }
@@ -207,13 +218,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         connectTag = true;
         // Listen to bluetooth events
         deviceInterface.setListeners(this::onMessageReceived, this::onMessageSent, this::onError);
-        start.setEnabled(false);
-        start.setBackgroundColor(Color.GREEN);
+//        start.setEnabled(false);
+//        start.setBackgroundColor(Color.GREEN);
 
         // Let's send a message:
-        if(connectTag == true){
-            sendMSG();
-        }
+//        if(connectTag == true){
+//            sendMSG();
+//        }
     }
 
     private void onMessageSent(String message) {
@@ -229,24 +240,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void onError(Throwable error) {
         connectTag = false;
         start.setEnabled(true);
-        start.setBackgroundColor(Color.RED);
+        //start.setBackgroundColor(Color.RED);
         // Handle the error
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
-
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("Error");
-        alertDialog.setMessage("Unable to connect device.");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        if(!((Activity) MainActivity.this).isFinishing()) {
+            //show dialog
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("Unable to connect device.");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -515,7 +531,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(connectTag == true){
             sendMSG();
         }else{
-            Toast.makeText(MainActivity.this, "Device is not connected." , Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Press \"START\" to send the data." , Toast.LENGTH_LONG).show();
         }
     }
 
