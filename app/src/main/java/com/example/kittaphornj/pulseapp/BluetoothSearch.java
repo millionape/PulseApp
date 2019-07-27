@@ -40,7 +40,7 @@ public class BluetoothSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_search);
-        Button scan_button = (Button) findViewById(R.id.button_scan);
+        Button exit_btn = (Button) findViewById(R.id.ext_btn);
         BluetoothManager bluetoothManager = BluetoothManager.getInstance();
         dialog = new ProgressDialog(BluetoothSearch.this);
         dialog.setCancelable(false);
@@ -81,24 +81,11 @@ public class BluetoothSearch extends AppCompatActivity {
             }
         });
         dialog.dismiss();
-        scan_button.setOnClickListener(new View.OnClickListener() {
+        exit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                blu_name.clear();
-                mac_addr.clear();
-                dialog.setMessage("Scanning...");
-                dialog.show();
-                List<BluetoothDevice> pairedDevices = bluetoothManager.getPairedDevicesList();
-                for (BluetoothDevice device : pairedDevices) {
-                    blu_name.add(device.getName());
-                    mac_addr.add(device.getAddress());
-                    Log.d("My Bluetooth App", "Device name: " + device.getName());
-                    Log.d("My Bluetooth App", "Device MAC Address: " + device.getAddress());
-                }
-
-                CustomAdapter adapter = new CustomAdapter(getApplicationContext(), blu_name, mac_addr);
-                listView.setAdapter(adapter);
-                dialog.dismiss();
+                finish();
+                System.exit(0);
             }
         });
     }
